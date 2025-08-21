@@ -1,0 +1,25 @@
+# Main dependencies with exact versions
+Flask==2.3.3
+awsgi==0.0.5
+requests==2.31.0
+
+# Transitive dependencies for Flask
+blinker==1.9.0
+click==8.1.8
+itsdangerous==2.2.0
+Jinja2==3.1.6
+Werkzeug==3.1.3
+MarkupSafe==3.0.2
+
+# Transitive dependencies for awsgi
+httptools==0.6.4
+uvloop==0.21.0
+websockets==15.0.1
+# Werkzeug already included above
+# MarkupSafe already included above
+
+# Transitive dependencies for requests
+certifi==2024.2.2
+charset-normalizer==3.4.2
+idna==3.6
+urllib3==2.0.7

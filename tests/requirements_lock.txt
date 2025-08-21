@@ -1,0 +1,22 @@
+# Main test dependencies with exact versions
+pytest==7.4.0
+boto3==1.28.0
+requests==2.31.0
+
+# Transitive dependencies for pytest
+iniconfig==2.0.0
+packaging==25.0
+pluggy==1.4.0
+
+# Transitive dependencies for boto3
+botocore==1.31.85
+jmespath==1.0.1
+s3transfer==0.6.2
+python-dateutil==2.8.1
+# urllib3 included below
+
+# Transitive dependencies for requests
+certifi==2024.2.2
+charset-normalizer==3.4.2
+idna==3.6
+urllib3==2.0.7
