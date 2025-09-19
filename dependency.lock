@@ -1,492 +1,403 @@
 {
   "metadata": {
-    "projectName": "Flask-AWS-Lambda-API",
-    "timestamp": "2025-09-19T15:53:42Z",
-    "packageManagers": [
-      {
-        "name": "pip",
-        "version": "25.1.1"
-      }
-    ],
-    "runtimes": [
-      {
-        "name": "python",
-        "version": "3.8",
-        "comment": "Specified in template.yaml"
-      }
-    ]
+    "project_name": "Flask-AWS-Lambda-API",
+    "timestamp": "2025-09-19T12:40:00",
+    "analysis_type": "dependency scan",
+    "package_managers": ["pip"],
+    "language_runtime": "Python 3.8"
   },
-  "directDependencies": {
-    "production": [
-      {
-        "name": "flask",
-        "version": "3.1.2",
-        "license": "UNKNOWN",
-        "description": "A simple framework for building complex web applications.",
-        "isOutdated": false,
-        "latestVersion": null,
-        "vulnerabilities": []
-      },
-      {
-        "name": "requests",
-        "version": "2.32.5",
-        "license": "Apache Software License",
-        "description": "Python HTTP for Humans.",
-        "isOutdated": false,
-        "latestVersion": null,
-        "vulnerabilities": []
-      },
-      {
-        "name": "awsgi",
-        "version": "0.0.5",
-        "license": "BSD License",
-        "description": "AWSGI - Wraps a WSGI application to work with AWS API Gateway and Lambda",
-        "isOutdated": false,
-        "latestVersion": null,
-        "vulnerabilities": []
-      }
-    ],
-    "testing": [
-      {
-        "name": "pytest",
-        "version": "8.4.2",
-        "license": "MIT License",
-        "description": "pytest: simple powerful testing with Python",
-        "isOutdated": false,
-        "latestVersion": null,
-        "vulnerabilities": []
-      },
-      {
-        "name": "boto3",
-        "version": "1.40.34",
-        "license": "Apache Software License",
-        "description": "The AWS SDK for Python",
-        "isOutdated": false,
-        "latestVersion": null,
-        "vulnerabilities": []
-      },
-      {
-        "name": "requests",
-        "version": "2.32.5",
-        "license": "Apache Software License",
-        "description": "Python HTTP for Humans.",
-        "isOutdated": false,
-        "latestVersion": null,
-        "vulnerabilities": []
-      }
-    ]
+  "summary": {
+    "total_dependencies": {
+      "direct": 3,
+      "transitive": 11
+    },
+    "vulnerabilities": {
+      "critical": 0,
+      "high": 1,
+      "medium": 1,
+      "low": 0,
+      "unknown": 0
+    },
+    "outdated_packages": 3
   },
-  "transitiveDependencies": [
+  "direct_dependencies": [
     {
-      "name": "blinker",
-      "version": "1.9.0",
-      "license": "MIT License",
-      "parentDependencies": ["flask"],
+      "name": "flask",
+      "version": "2.3.3",
+      "package_manager": "pip",
+      "type": "production",
+      "license": "BSD-3-Clause",
+      "is_outdated": true,
+      "latest_version": "3.1.2",
       "vulnerabilities": []
     },
     {
-      "name": "click",
-      "version": "8.3.0",
-      "license": "UNKNOWN",
-      "parentDependencies": ["flask"],
+      "name": "requests",
+      "version": "2.31.0",
+      "package_manager": "pip",
+      "type": "production",
+      "license": "Apache-2.0",
+      "is_outdated": true,
+      "latest_version": "2.32.5",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2024-47081",
+          "severity": "medium",
+          "description": "Due to a URL parsing issue, Requests releases prior to 2.32.4 may leak .netrc credentials to third parties for specific maliciously-crafted URLs."
+        },
+        {
+          "id": "CVE-2024-35195",
+          "severity": "medium",
+          "description": "When making requests through a Session, if the first request is made with verify=False to disable cert verification, all subsequent requests to the same host will continue to ignore cert verification."
+        }
+      ]
+    },
+    {
+      "name": "awsgi",
+      "version": "0.0.5",
+      "package_manager": "pip",
+      "type": "production",
+      "license": "MIT",
+      "is_outdated": false,
+      "latest_version": "0.0.5",
+      "vulnerabilities": []
+    }
+  ],
+  "transitive_dependencies": [
+    {
+      "name": "Werkzeug",
+      "version": "3.1.3",
+      "package_manager": "pip",
+      "required_by": ["flask"],
+      "license": "BSD-3-Clause",
+      "vulnerabilities": []
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6",
+      "package_manager": "pip",
+      "required_by": ["flask"],
+      "license": "BSD-3-Clause",
       "vulnerabilities": []
     },
     {
       "name": "itsdangerous",
       "version": "2.2.0",
-      "license": "BSD License",
-      "parentDependencies": ["flask"],
+      "package_manager": "pip",
+      "required_by": ["flask"],
+      "license": "BSD-3-Clause",
       "vulnerabilities": []
     },
     {
-      "name": "jinja2",
-      "version": "3.1.6",
-      "license": "BSD License",
-      "parentDependencies": ["flask"],
+      "name": "click",
+      "version": "8.1.8",
+      "package_manager": "pip",
+      "required_by": ["flask"],
+      "license": "BSD-3-Clause",
       "vulnerabilities": []
     },
     {
-      "name": "markupsafe",
+      "name": "blinker",
+      "version": "1.9.0",
+      "package_manager": "pip",
+      "required_by": ["flask"],
+      "license": "MIT",
+      "vulnerabilities": []
+    },
+    {
+      "name": "MarkupSafe",
       "version": "3.0.2",
-      "license": "BSD License",
-      "parentDependencies": ["jinja2", "werkzeug"],
-      "vulnerabilities": []
-    },
-    {
-      "name": "werkzeug",
-      "version": "3.1.3",
-      "license": "BSD License",
-      "parentDependencies": ["flask", "awsgi"],
+      "package_manager": "pip",
+      "required_by": ["Jinja2", "Werkzeug"],
+      "license": "BSD-3-Clause",
       "vulnerabilities": []
     },
     {
       "name": "certifi",
-      "version": "2025.8.3",
-      "license": "Mozilla Public License 2.0 (MPL 2.0)",
-      "parentDependencies": ["requests"],
-      "vulnerabilities": []
+      "version": "2024.2.2",
+      "package_manager": "pip",
+      "required_by": ["requests"],
+      "license": "MPL-2.0",
+      "is_outdated": true,
+      "latest_version": "2025.8.3",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2024-39689",
+          "severity": "high",
+          "description": "Certifi affected versions recognized root certificates from GLOBALTRUST that have compliance issues and are being removed from Mozilla's trust store."
+        }
+      ]
     },
     {
       "name": "charset-normalizer",
-      "version": "3.4.3",
+      "version": "3.4.2",
+      "package_manager": "pip",
+      "required_by": ["requests"],
       "license": "MIT",
-      "parentDependencies": ["requests"],
       "vulnerabilities": []
     },
     {
       "name": "idna",
-      "version": "3.10",
-      "license": "BSD License",
-      "parentDependencies": ["requests"],
-      "vulnerabilities": []
+      "version": "3.6",
+      "package_manager": "pip",
+      "required_by": ["requests"],
+      "license": "BSD-3-Clause",
+      "is_outdated": true,
+      "latest_version": "3.10",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2024-3651",
+          "severity": "medium",
+          "description": "Vulnerable to Denial Of Service via the idna.encode(), where a specially crafted argument could lead to significant resource consumption."
+        }
+      ]
     },
     {
       "name": "urllib3",
-      "version": "2.5.0",
-      "license": "UNKNOWN",
-      "parentDependencies": ["requests", "botocore"],
-      "vulnerabilities": []
+      "version": "1.26.20",
+      "package_manager": "pip",
+      "required_by": ["requests"],
+      "license": "MIT",
+      "is_outdated": true,
+      "latest_version": "2.5.0",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2025-50181",
+          "severity": "medium",
+          "description": "It is possible to disable redirects for all requests by instantiating a PoolManager but redirects can still occur in certain conditions."
+        }
+      ]
     },
     {
       "name": "httptools",
       "version": "0.6.4",
-      "license": "MIT License",
-      "parentDependencies": ["awsgi"],
+      "package_manager": "pip",
+      "required_by": ["awsgi"],
+      "license": "MIT",
       "vulnerabilities": []
     },
     {
       "name": "uvloop",
       "version": "0.21.0",
-      "license": "Apache Software License; MIT License",
-      "parentDependencies": ["awsgi"],
+      "package_manager": "pip",
+      "required_by": ["awsgi"],
+      "license": "MIT, Apache-2.0",
       "vulnerabilities": []
     },
     {
       "name": "websockets",
       "version": "15.0.1",
-      "license": "BSD License",
-      "parentDependencies": ["awsgi"],
-      "vulnerabilities": []
-    },
-    {
-      "name": "iniconfig",
-      "version": "2.1.0",
-      "license": "MIT License",
-      "parentDependencies": ["pytest"],
-      "vulnerabilities": []
-    },
-    {
-      "name": "packaging",
-      "version": "25.0",
-      "license": "Apache Software License; BSD License",
-      "parentDependencies": ["pytest"],
-      "vulnerabilities": []
-    },
-    {
-      "name": "pluggy",
-      "version": "1.6.0",
-      "license": "MIT License",
-      "parentDependencies": ["pytest"],
-      "vulnerabilities": []
-    },
-    {
-      "name": "pygments",
-      "version": "2.19.2",
-      "license": "BSD License",
-      "parentDependencies": ["pytest"],
-      "vulnerabilities": []
-    },
-    {
-      "name": "botocore",
-      "version": "1.40.34",
-      "license": "Apache Software License",
-      "parentDependencies": ["boto3", "s3transfer"],
-      "vulnerabilities": []
-    },
-    {
-      "name": "jmespath",
-      "version": "1.0.1",
-      "license": "MIT License",
-      "parentDependencies": ["boto3", "botocore"],
-      "vulnerabilities": []
-    },
-    {
-      "name": "s3transfer",
-      "version": "0.14.0",
-      "license": "Apache Software License",
-      "parentDependencies": ["boto3"],
-      "vulnerabilities": []
-    },
-    {
-      "name": "python-dateutil",
-      "version": "2.9.0.post0",
-      "license": "Apache Software License; BSD License",
-      "parentDependencies": ["botocore"],
-      "vulnerabilities": []
-    },
-    {
-      "name": "six",
-      "version": "1.17.0",
-      "license": "MIT License",
-      "parentDependencies": ["python-dateutil"],
+      "package_manager": "pip",
+      "required_by": ["awsgi"],
+      "license": "BSD-3-Clause",
       "vulnerabilities": []
     }
   ],
-  "dependencyTree": {
-    "production": [
-      {
-        "name": "flask",
-        "version": "3.1.2",
-        "dependencies": [
-          {
-            "name": "blinker",
-            "version": "1.9.0",
-            "dependencies": []
-          },
-          {
-            "name": "click",
-            "version": "8.3.0",
-            "dependencies": []
-          },
-          {
-            "name": "itsdangerous",
-            "version": "2.2.0",
-            "dependencies": []
-          },
-          {
-            "name": "jinja2",
-            "version": "3.1.6",
-            "dependencies": [
-              {
-                "name": "markupsafe",
-                "version": "3.0.2",
-                "dependencies": []
-              }
-            ]
-          },
-          {
-            "name": "werkzeug",
-            "version": "3.1.3",
-            "dependencies": [
-              {
-                "name": "markupsafe",
-                "version": "3.0.2",
-                "dependencies": []
-              }
-            ]
+  "dependency_tree": {
+    "flask": {
+      "version": "2.3.3",
+      "dependencies": {
+        "Werkzeug": {
+          "version": "3.1.3",
+          "dependencies": {
+            "MarkupSafe": {
+              "version": "3.0.2",
+              "dependencies": {}
+            }
           }
-        ]
-      },
-      {
-        "name": "requests",
-        "version": "2.32.5",
-        "dependencies": [
-          {
-            "name": "certifi",
-            "version": "2025.8.3",
-            "dependencies": []
-          },
-          {
-            "name": "charset-normalizer",
-            "version": "3.4.3",
-            "dependencies": []
-          },
-          {
-            "name": "idna",
-            "version": "3.10",
-            "dependencies": []
-          },
-          {
-            "name": "urllib3",
-            "version": "2.5.0",
-            "dependencies": []
+        },
+        "Jinja2": {
+          "version": "3.1.6",
+          "dependencies": {
+            "MarkupSafe": {
+              "version": "3.0.2",
+              "dependencies": {}
+            }
           }
-        ]
-      },
-      {
-        "name": "awsgi",
-        "version": "0.0.5",
-        "dependencies": [
-          {
-            "name": "httptools",
-            "version": "0.6.4",
-            "dependencies": []
-          },
-          {
-            "name": "uvloop",
-            "version": "0.21.0",
-            "dependencies": []
-          },
-          {
-            "name": "websockets",
-            "version": "15.0.1",
-            "dependencies": []
-          },
-          {
-            "name": "werkzeug",
-            "version": "3.1.3",
-            "dependencies": [
-              {
-                "name": "markupsafe",
-                "version": "3.0.2",
-                "dependencies": []
-              }
-            ]
+        },
+        "itsdangerous": {
+          "version": "2.2.0",
+          "dependencies": {}
+        },
+        "click": {
+          "version": "8.1.8",
+          "dependencies": {}
+        },
+        "blinker": {
+          "version": "1.9.0",
+          "dependencies": {}
+        }
+      }
+    },
+    "requests": {
+      "version": "2.31.0",
+      "dependencies": {
+        "certifi": {
+          "version": "2024.2.2",
+          "dependencies": {}
+        },
+        "charset-normalizer": {
+          "version": "3.4.2",
+          "dependencies": {}
+        },
+        "idna": {
+          "version": "3.6",
+          "dependencies": {}
+        },
+        "urllib3": {
+          "version": "1.26.20",
+          "dependencies": {}
+        }
+      }
+    },
+    "awsgi": {
+      "version": "0.0.5",
+      "dependencies": {
+        "httptools": {
+          "version": "0.6.4",
+          "dependencies": {}
+        },
+        "uvloop": {
+          "version": "0.21.0",
+          "dependencies": {}
+        },
+        "websockets": {
+          "version": "15.0.1",
+          "dependencies": {}
+        },
+        "Werkzeug": {
+          "version": "3.1.3",
+          "dependencies": {
+            "MarkupSafe": {
+              "version": "3.0.2",
+              "dependencies": {}
+            }
           }
-        ]
+        }
+      }
+    }
+  },
+  "test_dependencies": [
+    {
+      "name": "pytest",
+      "version": "7.4.4",
+      "package_manager": "pip",
+      "type": "test",
+      "license": "MIT",
+      "is_outdated": true,
+      "latest_version": "8.4.2",
+      "vulnerabilities": []
+    },
+    {
+      "name": "boto3",
+      "version": "1.34.34",
+      "package_manager": "pip",
+      "type": "test",
+      "license": "Apache-2.0",
+      "is_outdated": true,
+      "latest_version": "1.40.34",
+      "vulnerabilities": []
+    },
+    {
+      "name": "requests",
+      "version": "2.31.0",
+      "package_manager": "pip",
+      "type": "test",
+      "license": "Apache-2.0",
+      "is_outdated": true,
+      "latest_version": "2.32.5",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2024-47081",
+          "severity": "medium",
+          "description": "Due to a URL parsing issue, Requests releases prior to 2.32.4 may leak .netrc credentials to third parties for specific maliciously-crafted URLs."
+        },
+        {
+          "id": "CVE-2024-35195",
+          "severity": "medium",
+          "description": "When making requests through a Session, if the first request is made with verify=False to disable cert verification, all subsequent requests to the same host will continue to ignore cert verification."
+        }
+      ]
+    }
+  ],
+  "security_analysis": {
+    "high_severity": [
+      {
+        "package_name": "certifi",
+        "version": "2024.2.2",
+        "vulnerability_id": "CVE-2024-39689",
+        "description": "Certifi affected versions recognized root certificates from GLOBALTRUST that have compliance issues and are being removed from Mozilla's trust store.",
+        "recommendation": "Upgrade to certifi >= 2024.7.4"
       }
     ],
-    "testing": [
+    "medium_severity": [
       {
-        "name": "pytest",
-        "version": "8.4.2",
-        "dependencies": [
-          {
-            "name": "iniconfig",
-            "version": "2.1.0",
-            "dependencies": []
-          },
-          {
-            "name": "packaging",
-            "version": "25.0",
-            "dependencies": []
-          },
-          {
-            "name": "pluggy",
-            "version": "1.6.0",
-            "dependencies": []
-          },
-          {
-            "name": "pygments",
-            "version": "2.19.2",
-            "dependencies": []
-          }
-        ]
+        "package_name": "requests",
+        "version": "2.31.0",
+        "vulnerability_id": ["CVE-2024-47081", "CVE-2024-35195"],
+        "description": "Multiple security issues in requests library",
+        "recommendation": "Upgrade to requests >= 2.32.5"
       },
       {
-        "name": "boto3",
-        "version": "1.40.34",
-        "dependencies": [
-          {
-            "name": "botocore",
-            "version": "1.40.34",
-            "dependencies": [
-              {
-                "name": "jmespath",
-                "version": "1.0.1",
-                "dependencies": []
-              },
-              {
-                "name": "python-dateutil",
-                "version": "2.9.0.post0",
-                "dependencies": [
-                  {
-                    "name": "six",
-                    "version": "1.17.0",
-                    "dependencies": []
-                  }
-                ]
-              },
-              {
-                "name": "urllib3",
-                "version": "2.5.0",
-                "dependencies": []
-              }
-            ]
-          },
-          {
-            "name": "jmespath",
-            "version": "1.0.1",
-            "dependencies": []
-          },
-          {
-            "name": "s3transfer",
-            "version": "0.14.0",
-            "dependencies": [
-              {
-                "name": "botocore",
-                "version": "1.40.34",
-                "dependencies": [
-                  {
-                    "name": "jmespath",
-                    "version": "1.0.1",
-                    "dependencies": []
-                  },
-                  {
-                    "name": "python-dateutil",
-                    "version": "2.9.0.post0",
-                    "dependencies": [
-                      {
-                        "name": "six",
-                        "version": "1.17.0",
-                        "dependencies": []
-                      }
-                    ]
-                  },
-                  {
-                    "name": "urllib3",
-                    "version": "2.5.0",
-                    "dependencies": []
-                  }
-                ]
-              }
-            ]
-          }
-        ]
+        "package_name": "idna",
+        "version": "3.6",
+        "vulnerability_id": "CVE-2024-3651",
+        "description": "DoS vulnerability via specially crafted inputs to idna.encode()",
+        "recommendation": "Upgrade to idna >= 3.7"
       },
       {
-        "name": "requests",
-        "version": "2.32.5",
-        "dependencies": [
-          {
-            "name": "certifi",
-            "version": "2025.8.3",
-            "dependencies": []
-          },
-          {
-            "name": "charset-normalizer",
-            "version": "3.4.3",
-            "dependencies": []
-          },
-          {
-            "name": "idna",
-            "version": "3.10",
-            "dependencies": []
-          },
-          {
-            "name": "urllib3",
-            "version": "2.5.0",
-            "dependencies": []
-          }
-        ]
+        "package_name": "urllib3",
+        "version": "1.26.20",
+        "vulnerability_id": "CVE-2025-50181",
+        "description": "Redirect handling issue that can bypass SSRF mitigations",
+        "recommendation": "Upgrade to urllib3 >= 2.5.0"
       }
-    ]
+    ],
+    "low_severity": [],
+    "critical_severity": []
   },
-  "securityVulnerabilities": {
-    "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0,
-    "informational": 0,
-    "total": 0
-  },
-  "outdatedPackages": [
+  "outdated_packages_summary": [
     {
-      "name": "cyclonedx-python-lib",
-      "currentVersion": "9.1.0",
-      "latestVersion": "11.1.0",
-      "isDirectDependency": false
+      "package_name": "flask",
+      "current_version": "2.3.3",
+      "latest_version": "3.1.2",
+      "update_recommendation": "Major version update available, may require code changes"
     },
     {
-      "name": "pip",
-      "currentVersion": "25.1.1",
-      "latestVersion": "25.2",
-      "isDirectDependency": false
+      "package_name": "requests",
+      "current_version": "2.31.0",
+      "latest_version": "2.32.5",
+      "update_recommendation": "Minor version update with security fixes, update recommended"
+    },
+    {
+      "package_name": "certifi",
+      "current_version": "2024.2.2",
+      "latest_version": "2025.8.3",
+      "update_recommendation": "Security update, strongly recommended"
+    },
+    {
+      "package_name": "idna",
+      "current_version": "3.6",
+      "latest_version": "3.10",
+      "update_recommendation": "Security update, recommended"
+    },
+    {
+      "package_name": "urllib3",
+      "current_version": "1.26.20",
+      "latest_version": "2.5.0",
+      "update_recommendation": "Major version update with security fixes, may require code changes"
+    },
+    {
+      "package_name": "pytest",
+      "current_version": "7.4.4",
+      "latest_version": "8.4.2",
+      "update_recommendation": "Major version update available for test dependency"
+    },
+    {
+      "package_name": "boto3",
+      "current_version": "1.34.34",
+      "latest_version": "1.40.34",
+      "update_recommendation": "Minor version update available for test dependency"
     }
-  ],
-  "licenseCompliance": {
-    "permitList": ["MIT", "BSD", "Apache", "MPL", "Python Software Foundation"],
-    "hasProhibitedLicense": false,
-    "unknownLicenses": ["UNKNOWN"]
-  }
+  ]
 }
