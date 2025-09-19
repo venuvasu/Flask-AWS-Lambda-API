@@ -1,141 +1,138 @@
-# Dependencies Analysis for Flask-AWS-Lambda-API
+# Dependencies Analysis
 
 ## Project Overview
 
-This repository contains a Flask-based API designed to run on AWS Lambda using the AWS Serverless Application Model (SAM). The project demonstrates how to build a serverless REST API using Flask and deploy it to AWS Lambda.
+**Project Name**: Flask-AWS-Lambda-API  
+**Analysis Date**: September 19, 2025  
+**Language**: Python 3.8  
+**Package Manager**: pip
 
-## Dependency Management
+This repository contains a Flask application designed to run on AWS Lambda using the AWS Serverless Application Model (SAM). The project uses the `awsgi` adapter to bridge Flask with AWS Lambda's event handling system.
 
-The project uses pip as its package manager with dependencies defined in:
-- `hello_world/requirements.txt`: Core application dependencies
-- `tests/requirements.txt`: Testing dependencies
+## Dependency Structure
 
-### Python Runtime
-- Current runtime: Python 3.8 (specified in template.yaml)
-- Recommendation: Consider upgrading to Python 3.10+ for improved performance and security
+The project's dependency structure consists of:
 
-## Direct Dependencies
+- **Direct Dependencies**: 3
+- **Transitive Dependencies**: 11
+- **Test Dependencies**: 3
 
-### Production Dependencies
+### Main Application Dependencies
 
-| Package | Version | License | Description |
-|---------|---------|---------|-------------|
-| flask | 3.1.2 | UNKNOWN | A simple framework for building complex web applications |
-| requests | 2.32.5 | Apache Software License | Python HTTP for Humans |
-| awsgi | 0.0.5 | BSD License | WSGI adapter for AWS API Gateway and Lambda |
+| Package | Version | Latest | Status | License |
+|---------|---------|--------|--------|---------|
+| flask | 2.3.3 | 3.1.2 | ⚠️ Outdated | BSD-3-Clause |
+| requests | 2.31.0 | 2.32.5 | ⚠️ Vulnerable | Apache-2.0 |
+| awsgi | 0.0.5 | 0.0.5 | ✅ Current | MIT |
 
 ### Test Dependencies
 
-| Package | Version | License | Description |
-|---------|---------|---------|-------------|
-| pytest | 8.4.2 | MIT License | Simple powerful testing with Python |
-| boto3 | 1.40.34 | Apache Software License | The AWS SDK for Python |
-| requests | 2.32.5 | Apache Software License | Python HTTP for Humans (shared with production) |
+| Package | Version | Latest | Status | License |
+|---------|---------|--------|--------|---------|
+| pytest | 7.4.4 | 8.4.2 | ⚠️ Outdated | MIT |
+| boto3 | 1.34.34 | 1.40.34 | ⚠️ Outdated | Apache-2.0 |
+| requests | 2.31.0 | 2.32.5 | ⚠️ Vulnerable | Apache-2.0 |
 
-## Dependency Analysis Findings
+## Security Analysis
 
-### Security Vulnerabilities
+### Vulnerability Summary
 
-No security vulnerabilities were found in the current dependencies.
+- **Critical**: 0
+- **High**: 1
+- **Medium**: 3
+- **Low**: 0
 
-### Outdated Packages
+### High Severity Vulnerabilities
 
-The following packages are not direct dependencies but are outdated:
-- `cyclonedx-python-lib`: 9.1.0 → 11.1.0
-- `pip`: 25.1.1 → 25.2
+- **certifi (2024.2.2)**
+  - *CVE-2024-39689*: Certifi versions before 2024.7.4 include root certificates from GLOBALTRUST that have compliance issues and are being removed from Mozilla's trust store.
+  - *Recommendation*: Upgrade to certifi >= 2024.7.4
 
-### License Compliance
+### Medium Severity Vulnerabilities
 
-Most dependencies use standard permissive licenses (MIT, BSD, Apache, etc.) that are typically compatible with both open-source and commercial use. However, several packages have unknown licenses:
-- `Flask`: License information not specified
-- `click`: License information not specified
-- `urllib3`: License information not specified
+- **requests (2.31.0)**
+  - *CVE-2024-47081*: Due to a URL parsing issue, Requests releases prior to 2.32.4 may leak .netrc credentials to third parties for specific maliciously-crafted URLs.
+  - *CVE-2024-35195*: When making requests through a Session, if the first request is made with verify=False to disable cert verification, all subsequent requests to the same host will continue to ignore cert verification.
+  - *Recommendation*: Upgrade to requests >= 2.32.5
 
-## Dependency Usage Analysis
+- **idna (3.6)**
+  - *CVE-2024-3651*: Vulnerable to Denial Of Service via the idna.encode(), where a specially crafted argument could lead to significant resource consumption.
+  - *Recommendation*: Upgrade to idna >= 3.7
 
-### Flask Framework
+- **urllib3 (1.26.20)**
+  - *CVE-2025-50181*: It is possible to disable redirects for all requests by instantiating a PoolManager but redirects can still occur in certain conditions.
+  - *Recommendation*: Upgrade to urllib3 >= 2.5.0
 
-- **Current Version**: 3.1.2
-- **Usage**: Basic route definition and JSON response handling
-- **Files**: `hello_world/app.py`
-- **Features Used**:
-  - Flask application initialization
-  - Route decoration (`@app.route('/')`)
-  - JSON response generation (`jsonify`)
-- **Recommendations**:
-  - Version pinning in requirements.txt is recommended for stability
-  - Current usage is minimal and should be compatible with newer versions
+## License Compliance
 
-### Requests Library
+All dependencies use permissive open-source licenses that are generally compatible with most commercial and open-source projects:
 
-- **Current Version**: 2.32.5
-- **Usage**: Used in integration tests to make HTTP requests
-- **Files**: `tests/integration/test_api_gateway.py`
-- **Features Used**:
-  - Basic GET requests
-  - Response status code checking
-  - JSON response parsing
-- **Recommendations**:
-  - Version is current, no immediate update needed
-  - Consider pinning the version in requirements.txt
+- **BSD-3-Clause**: 6 packages
+- **MIT**: 6 packages
+- **Apache-2.0**: 3 packages
+- **MPL-2.0**: 1 package
 
-### AWSGI
+There are no licenses identified that would typically cause compliance concerns or require special attention.
 
-- **Current Version**: 0.0.5
-- **Usage**: Adapter that bridges Flask WSGI application to AWS Lambda
-- **Files**: `hello_world/lambda_handler.py`
-- **Features Used**:
-  - Lambda handler response formatting (`awsgi.response`)
-- **Recommendations**:
-  - The package is relatively simple with minimal changes
-  - Consider version pinning for stability
+## Dependency Tree Highlights
 
-### Boto3
+The main application relies on three primary dependencies:
 
-- **Current Version**: 1.40.34
-- **Usage**: AWS SDK for Python, used in integration tests
-- **Files**: `tests/integration/test_api_gateway.py`
-- **Features Used**:
-  - CloudFormation client initialization
-  - Stack output retrieval
-- **Recommendations**:
-  - Current version is up-to-date
-  - Consider pinning the version in requirements.txt for stability
+1. **Flask (2.3.3)** - Web framework with dependencies on:
+   - Werkzeug (3.1.3)
+   - Jinja2 (3.1.6)
+   - itsdangerous (2.2.0)
+   - click (8.1.8)
+   - blinker (1.9.0)
 
-## Dependency Tree
+2. **requests (2.31.0)** - HTTP client with dependencies on:
+   - certifi (2024.2.2) - ⚠️ Has security vulnerability
+   - charset-normalizer (3.4.2)
+   - idna (3.6) - ⚠️ Has security vulnerability
+   - urllib3 (1.26.20) - ⚠️ Has security vulnerability
 
-The application has a relatively simple dependency structure:
+3. **awsgi (0.0.5)** - AWS Lambda adapter for WSGI applications with dependencies on:
+   - httptools (0.6.4)
+   - uvloop (0.21.0)
+   - websockets (15.0.1)
+   - Werkzeug (3.1.3)
 
-- **Flask** → blinker, click, itsdangerous, jinja2 → markupsafe, werkzeug → markupsafe
-- **Requests** → certifi, charset-normalizer, idna, urllib3
-- **AWSGI** → httptools, uvloop, websockets, werkzeug → markupsafe
-- **Pytest** → iniconfig, packaging, pluggy, pygments
-- **Boto3** → botocore → jmespath, python-dateutil → six, urllib3, jmespath, s3transfer → botocore
+## Update Recommendations
 
-## Recommendations
+### Priority Updates
 
-1. **Version Pinning**:
-   - Add version pinning to all dependencies in both requirements files
-   - Suggested format: `package==version` (e.g., `flask==3.1.2`)
+1. **requests (2.31.0 → 2.32.5)**
+   - Contains security fixes for two medium severity vulnerabilities
+   - Minor version update, should be compatible with existing code
 
-2. **Runtime Upgrade**:
-   - Consider upgrading from Python 3.8 to Python 3.10 or 3.11
-   - Update the `Runtime` property in `template.yaml`
+2. **certifi (2024.2.2 → 2025.8.3)**
+   - Contains critical security fix for root certificate issues
+   - Transitive dependency of requests, will be updated when requests is updated
 
-3. **License Compliance**:
-   - Check the license terms for packages with unknown licenses (Flask, click, urllib3)
-   - Document any license restrictions in the project documentation
+3. **urllib3 (1.26.20 → 2.5.0)**
+   - Contains security fixes
+   - Major version update may require code changes
 
-4. **Development Best Practices**:
-   - Consider adding a `requirements-dev.txt` file for development dependencies
-   - Set up a dependency update schedule to regularly check for security updates
+### Secondary Updates
 
-5. **Dependency Isolation**:
-   - Use virtual environments for development and testing
-   - Consider using dependency locking tools like pip-tools
+1. **Flask (2.3.3 → 3.1.2)**
+   - Major version update that may require code changes
+   - No known security issues in current version
 
-## Conclusion
+2. **Test dependencies**
+   - pytest (7.4.4 → 8.4.2)
+   - boto3 (1.34.34 → 1.40.34)
+   - Not critical for application security but recommended for testing
 
-The project has a simple and well-structured dependency setup with no security vulnerabilities detected. The main recommendations focus on explicit version pinning to ensure reproducible builds and runtime upgrades for improved security and performance.
+## Conclusion and Recommendations
 
-The application's use of Flask, requests, and AWSGI is straightforward and minimal, which makes it relatively easy to maintain and update these dependencies when needed.
+The application has several security vulnerabilities in its dependency chain that should be addressed promptly. The most critical issue is in the transitive dependency `certifi`, which is included via the `requests` library.
+
+**Recommended Action Plan:**
+
+1. Update `requests` to version 2.32.5, which will also update its dependencies including `certifi`
+2. Test the application thoroughly after the update to ensure compatibility
+3. Consider updating Flask to the latest version in a separate update cycle, as it's a major version change
+4. Update the test dependencies to their latest versions
+
+All suggested updates should maintain compatibility with Python 3.8, which is currently used in this project. The required changes should be straightforward for the security updates, with minimal risk of breaking changes.
