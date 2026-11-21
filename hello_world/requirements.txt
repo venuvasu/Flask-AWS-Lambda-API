@@ -1,3 +1,3 @@
-requests
-awsgi 
-flask
+requests>=2.32.4
+awsgi
+flask>=3.1.0
