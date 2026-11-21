@@ -4,7 +4,7 @@ This project demonstrates how to deploy a serverless Flask application on AWS La
 ## Prerequisites
 Before you begin, make sure you have the following installed and configured:
 
-- Python 3.8 or later
+- Python 3.13
 - AWS CLI
 - AWS SAM CLI
 - Docker
